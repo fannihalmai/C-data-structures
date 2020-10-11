@@ -8,7 +8,13 @@
 
 #include "double_chained_list.h"
 
-int main(int argc, const char * argv[]) {
-	Node **head = initialisation();
+int main(void) {
+	Node *head=initialise();
+	push(&head,4);
+	affiche(&head);
+	pop_(&head);
+	affiche(&head);
+	
+	
     return 0;
 }

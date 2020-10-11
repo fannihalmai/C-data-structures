@@ -7,48 +7,48 @@
 //
 
 #include "double_chained_list.h"
-/* Initialiser la liste et ajouter premier element */
-Node** initialisation(void){
-	Node **head=(Node**)malloc(sizeof(Node));
-	Node *node=(Node*)malloc(sizeof(Node));
-	int value;
-	if (head == NULL)
-    {
-        exit(1);
-    }
-    printf("Insert first value : \n");
-    scanf("%d", &value);
-	head=&node;
-	node->prev=*head;
-	node->next=NULL;
+/* On initialise la liste et renvoie un pointeur head, qui pointera sur la tete de la liste */
+Node *initialise(void){
+	Node *head=(Node*)malloc(sizeof(Node));
+	head=NULL;
 	return head;
 }
 
-/* Ajouter premier element */
-Node** push_ele(Node **head, int value){
-	if (*head==NULL){
-		exit(1);
-	}
-	Node *new_element=(Node*)malloc(sizeof(Node));
-	new_element->next=(*head);
-	new_element->prev=NULL;
-	head=&new_element;
+/* Fonction push permet d'ajouter un nouvel element en tete de liste */
+
+Node** push(struct Node** head, int new_data)
+{
+	Node* new_node = (Node*)malloc(sizeof(Node));
+    new_node->val = new_data;
+    new_node->next = (*head);
+    new_node->prev = NULL;
+  
+    if ((*head) != NULL)
+        (*head)->prev = new_node;
+  
+    (*head) = new_node;
+	
 	return head;
 }
 
-/* Supprimer premier element */
-Node** pop_ele(Node **head){
-	if (*head==NULL){
-		exit(1);
-	}
+
+/* Fonction push permet de supprimer le premier element de la liste */
+Node** pop(Node **head){
+
 	Node *element_sup=(Node*)malloc(sizeof(Node));
 	Node *new_first=(Node*)malloc(sizeof(Node));
 	//link second element to head
-	element_sup=*head;
+	element_sup=(*head);
 	//deplacer head
-	head=&element_sup->next;
-	new_first=*head;
-	new_first->prev=NULL;
+	
+	if (element_sup->next == NULL){
+		(*head)=NULL;
+	} else {
+		(*head)=element_sup->next;
+		new_first=(*head);
+		new_first->prev=NULL;
+	}
+	
 	free(element_sup);
 	return head;
 }
@@ -71,3 +71,17 @@ Node* previous(Node *node){
 	exit(1);
 }
 
+/* Affichage de la liste */
+
+void affiche(Node **head){
+
+	Node *actuel=(Node*)malloc(sizeof(Node));
+	actuel = *head;
+
+    while (actuel != NULL)
+    {
+        printf("%d -> ", actuel->val);
+        actuel = actuel->next;
+    }
+    printf("NULL\n");
+}
