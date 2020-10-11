@@ -15,18 +15,19 @@
 
 typedef struct Node {
     int val;
-	struct Node* next; // Pointer to next node
-    struct Node* prev; // Pointer to previous node
+	struct Node *next; // Pointer to next node
+    struct Node *prev; // Pointer to previous node
 }Node;
 
 typedef struct Head{
-	struct Node* first;
+	struct Node *first;
 }Head;
 
-Node** initialise(void);
-Node** push_ele(Node** head, int value);
-Node** pop_ele(Node **head);
+Node* initialise(void);
+Node **push(Node **head, int val);
+Node** pop(Node **head);
 Node* next(Node *node);
 Node* previous(Node *node);
+void affiche(Node **head);
 
 #endif /* double_chained_list_h */
