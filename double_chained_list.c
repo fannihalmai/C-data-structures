@@ -73,7 +73,7 @@ Node* previous(Node *node){
 
 /* Affichage de la liste */
 
-void affiche(Node **head){
+void display(Node **head){
 
 	Node *actuel=(Node*)malloc(sizeof(Node));
 	actuel = *head;

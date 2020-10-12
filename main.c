@@ -11,9 +11,9 @@
 int main(void) {
 	Node *head=initialise();
 	push(&head,4);
-	affiche(&head);
-	pop_(&head);
-	affiche(&head);
+	display(&head);
+	pop(&head);
+	display(&head);
 	
 	
     return 0;

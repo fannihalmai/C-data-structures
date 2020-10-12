@@ -25,9 +25,9 @@ typedef struct Head{
 
 Node* initialise(void);
 Node **push(Node **head, int val);
-Node** pop(Node **head);
+Node **pop(Node **head);
 Node* next(Node *node);
 Node* previous(Node *node);
-void affiche(Node **head);
+void display(Node **head);
 
 #endif /* double_chained_list_h */
